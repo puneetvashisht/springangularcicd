@@ -1,0 +1,45 @@
+sudo: required
+services:
+  - docker
+env:
+  global:
+    - SHA=$(git rev-parse HEAD)
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+# safelist
+branches:
+  only:
+  - master
+  except:
+  - dev 
+language: node_js
+node_js:
+  - 11.0.0
+before_install:
+  - cd my-spa-app
+  - npm install
+  - npm run build-prod
+  - cd ..
+  - mv my-spa-app/dist/my-spa-app/* dit-spring-boot-project/src/main/resources/static
+  - git add .
+  - git commit -m "moved to public folder"
+#   - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
+#   - curl https://sdk.cloud.google.com | bash > /dev/null;
+#   - source $HOME/google-cloud-sdk/path.bash.inc
+#   - gcloud components update kubectl
+#   - gcloud auth activate-service-account --key-file service-account.json
+#   - gcloud config set project domshom-web2
+#   - gcloud config set compute/zone asia-south1-a
+#   - gcloud container clusters get-credentials standard-cluster-2 --zone asia-south1-a --project domshom-web2
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  # - docker build -t puneetvashisht/domshom-client -f ./client/Dockerfile.dev ./client
+
+script:
+  - echo "Allz well"
+  # - docker run puneetvashisht/domshom-client npm test -- --coverage
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
+

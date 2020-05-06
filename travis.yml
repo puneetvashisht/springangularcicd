@@ -1,0 +1,18 @@
+sudo: required
+language: java
+jdk: oraclejdk8
+ 
+services:
+    - docker
+ 
+env:
+    global:
+      - SHA=$(git rev-parse HEAD)
+ 
+before_install:     
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+script:
+- ./mvnw clean install -B
+ 
+after_success:
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
