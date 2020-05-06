@@ -4,7 +4,11 @@ jdk: oraclejdk8
  
 services:
     - docker
- 
+branches:
+    only:
+    - master
+    except:
+    - dev 
 env:
     global:
       - SHA=$(git rev-parse HEAD)
