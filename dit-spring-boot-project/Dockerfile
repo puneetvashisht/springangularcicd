@@ -1,6 +1,6 @@
 # Start with a base image containing Java runtime
 # FROM openjdk:8-jdk-alpine
-FROM openjdk:latest
+FROM openjdk:11
 
 # Add Maintainer Info
 MAINTAINER Puneet Vashisht <puneetvashisht@gmail.com>
