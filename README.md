@@ -1,4 +1,4 @@
 # springangularcicd
     small change 
     by yash bharadwaj
-one more change
+    conflicting change... deliberate
