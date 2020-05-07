@@ -63,7 +63,6 @@
 				<artifactId>dockerfile-maven-plugin</artifactId>
 				<version>1.4.0</version>
 				<configuration>
-					<!-- replace `callicoder` with your docker id-->
 					<repository>puneetvashisht/dit-spring-boot-project</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
