@@ -61,14 +61,15 @@
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.4.10</version>
+				<version>1.4.0</version>
 				<configuration>
-					<repository>puneetvashisht/ditspring</repository>
-					<tag>latest</tag>
+					<!-- replace `callicoder` with your docker id-->
+					<repository>puneetvashisht/dit-spring-boot-project</repository>
+					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
-					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+					<useMavenSettingsForAuth>false</useMavenSettingsForAuth>
 				</configuration>
 				<executions>
 					<execution>
