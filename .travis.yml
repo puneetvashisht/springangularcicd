@@ -14,7 +14,7 @@ env:
       - SHA=$(git rev-parse HEAD)
  
 before_install:     
-    - echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - mv my-spa-app/dist/my-spa-app/* dit-spring-boot-project/src/main/resources/static
     - cd dit-spring-boot-project
 script:
